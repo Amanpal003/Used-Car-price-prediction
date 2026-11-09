@@ -6,3 +6,7 @@ scikit-learn
 joblib
 jupyter
 ipykernel
+fastapi
+uvicorn
+streamlit
+requests
