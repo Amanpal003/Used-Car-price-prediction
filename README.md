@@ -1,87 +1,159 @@
+🚗 Used Car Price Prediction
 
-# Used Car Price Prediction
+A Machine Learning web application that predicts the estimated selling price of a used car based on its details such as brand, manufacturing year, kilometers driven, fuel type, transmission, and ownership.
 
-## Project Overview
-This project aims to predict the estimated selling price of used cars using Machine Learning.
+🎯 Project Objective
 
-## Problem Type
-Supervised Machine Learning - Regression
+The objective of this project is to build a machine learning model that estimates used car prices using historical car sales data.
 
-## Machine Learning Algorithms
-1. Linear Regression
-2. Decision Tree Regressor
-3. Random Forest Regressor
+🛠️ Technologies Used
 
-## Technologies Used
 - Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+- Pandas and NumPy
+- Matplotlib and Seaborn
 - Scikit-learn
-- Jupyter Notebook
+- Random Forest Regressor
+- Joblib
 - FastAPI
 - Streamlit
+- Git and GitHub
 
- ## Dataset
-Dataset Name: Vehicle Dataset from CarDekho
-Source: Kaggle
-Dataset File: CAR DETAILS FROM CAR DEKHO.csv
-Location: data/raw/
+📂 Project Structure
 
-## Dataset Link: https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho
+Used-Car-Price-Prediction/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   ├── 01_EDA.ipynb
+│   └── 02_Data_Preprocessing.ipynb
+│
+├── models/
+│   └── random_forest_model.pkl
+│
+├── backend/
+│   ├── predict.py
+│   └── main.py
+│
+├── frontend/
+│   ├── app.py
+│   └── assets/
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
 
-The dataset contains information about used cars, including manufacturing year, selling price, kilometers driven, fuel type, transmission, owner, and seller type.
+📊 Dataset
 
-## Project Workflow
-1. Dataset Collection
-2. Exploratory Data Analysis (EDA)
-3. Data Preprocessing
-4. Feature Engineering
-5. Model Training
-6. Model Evaluation
-7. API Development
-8. Frontend Development
-9. Deployment
+- Source: Kaggle – Vehicle Dataset from CarDekho
+- Original records: 4,340
+- Records after removing duplicates: 3,577
+- Target variable: "selling_price"
 
-## Machine Learning Models
+Features Used
 
-The following regression algorithms were trained and evaluated:
+- Year
+- Kilometers Driven
+- Fuel
+- Seller Type
+- Transmission
+- Owner
+- Brand
+
+🔍 Exploratory Data Analysis (EDA)
+
+Performed exploratory data analysis to understand the dataset:
+
+- Checked missing values and duplicate records.
+- Analyzed numerical and categorical features.
+- Extracted car brands from car names.
+- Visualized feature distributions.
+- Identified outliers using the IQR method.
+- Analyzed correlations between numerical features.
+
+⚙️ Data Preprocessing
+
+- Removed duplicate records.
+- Extracted brand names from the car name column.
+- Separated independent and dependent variables.
+- Split the dataset into training and testing sets (80:20).
+- Applied StandardScaler to numerical features.
+- Applied OneHotEncoder to categorical features.
+- Used ColumnTransformer and Scikit-learn Pipeline.
+
+🤖 Machine Learning Models
+
+Three regression models were trained and evaluated:
 
 1. Linear Regression
 2. Decision Tree Regressor
 3. Random Forest Regressor
 
-## Model Evaluation
+Model Evaluation
 
-Models were evaluated using:
+Model| MAE| RMSE| R² Score
+Linear Regression| 179642.89| 384722.69| 0.5405
+Decision Tree| 198734.06| 473873.48| 0.3029
+Random Forest| 158827.69| 367979.71| 0.5796
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- R2 Score
+Random Forest Regressor performed best among the three tested models.
 
-### Model Comparison
+🌐 Application Features
 
-| Model | MAE | RMSE | R2 Score |
-|---|---:|---:|---:|
-| Linear Regression | 179642.89 | 384722.69 | 0.5405 |
-| Decision Tree | 198734.06 | 473873.48 | 0.3029 |
-| Random Forest | 158827.69 | 367979.71 | 0.5796 |
+- User-friendly Streamlit interface.
+- Enter car details to predict its estimated price.
+- FastAPI backend for prediction requests.
+- Indian currency formatting.
+- Input validation and error handling.
 
-**Best Performing Model:** Random Forest Regressor
+▶️ How to Run the Project
 
-## Saved Model
+1. Clone the repository
 
-The trained Random Forest pipeline is saved in:
+git clone https://github.com/Amanpal003/Used-Car-price-prediction.git
 
-`models/random_forest_model.pkl`
+2. Navigate to the project folder
 
-The pipeline includes preprocessing and the trained regression model.
+cd Used-Car-Price-Prediction
 
-## Project Status
+3. Install dependencies
 
-EDA, data preprocessing, feature engineering,
-model training, and model evaluation completed.
+pip install -r requirements.txt
 
-Currently working on user input-based price prediction.
+4. Start the FastAPI backend
 
+python -m uvicorn backend.main:app --reload
+
+API documentation:
+
+"http://127.0.0.1:8000/docs"
+
+5. Start the Streamlit frontend
+
+Open another terminal and run:
+
+python -m streamlit run frontend/app.py
+
+Open the application:
+
+"http://localhost:8501"
+
+📈 Evaluation Metrics
+
+- MAE: Measures the average absolute difference between actual and predicted prices.
+- RMSE: Measures prediction error while giving more weight to larger errors.
+- R² Score: Measures how much variation in the target variable is explained by the model.
+
+⚠️ Limitations
+
+- Predictions depend on the available historical dataset.
+- The dataset contains car records from 1992 to 2020.
+- Predictions are estimates and may differ from actual market prices.
+
+👨‍💻 Author
+
+Aman Pal
+
+Machine Learning | Python | Data Science
